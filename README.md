@@ -1,2 +1,4 @@
-# udacity-javascript-design-patterns
-Just for sharing data between computers.
+ud989-cat-clicker-ko-starter
+============================
+
+ud989-cat-clicker-ko-starter
