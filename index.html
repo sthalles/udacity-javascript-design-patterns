@@ -6,19 +6,23 @@
 </head>
 <body>
     <ul id="cat-list"></ul>
-    <div id="cat">
-
-        <h2 id="cat-name" data-bind="text: currentCat().name"></h2>
-        <p data-bind="text: currentCat().level"</p>
-        <div id="cat-count" data-bind="text: currentCat().clickCount"></div>
-        <img id="cat-img" src="" alt="cute cat" data-bind="click: incrementCounter, attr: {'src': currentCat().imgSource}">
+    <div id="cat" data-bind="with: currentCat">
+    	
+        <ul data-bind="foreach: $parent.catList">
+            <li data-bind="click: $root.updateImg">
+                <span data-bind="text: name"></span>
+            </li>
+        </ul>
+        
+        <h2 id="cat-name" data-bind="text: name"></h2>
+        <p data-bind="text: level"</p>
+        <div id="cat-count" data-bind="text: clickCount"></div>
+        <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {'src': imgSource}">
         <p> Nicknames </p>
         
-        <ul data-bind="foreach: currentCat().nicknames">
+        <ul data-bind="foreach: nicknames">
             <li>
-                Name at position: <span data-bind="text: $index"></span>:
-                <span data-bind="text: name"></span>
-                <a href="#" data-bind="click: $parent.removeNickname">Remove</a>
+                Cat's nickname: <span data-bind="text: $data"></span>:
             </li>
         </ul>
     </div>
